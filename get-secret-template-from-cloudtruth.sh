@@ -39,5 +39,4 @@ export PROJECTKEY=$(curl -s --header "Content-Type: application/json" --header "
 
 export ENVIRONMENTKEY=$(curl -s --header "Content-Type: application/json" --header "Authorization: Api-Key ${CLOUDTRUTH_API_KEY}" --request GET "https://api.cloudtruth.io/api/v1/environments/" -o - | jq -r '.results[] | select (.name == env.TARGETENV).id')
 
-curl -v --header "Authorization: Api-Key ${CLOUDTRUTH_API_KEY}" --header "accept: application/json" --request 'GET' "https://api.cloudtruth.io/api/v1/projects/${PROJECTKEY}/parameters/?environment=${ENVIRONMENTKEY}&evaluate=false&immediate_parameters=true&mask_secrets=false&name__iexact=${PROJECT}-secret-data-template" 2>/dev/null #| jq -r '.results[0].values_flat[0].value'
-
+curl -v --header "Authorization: Api-Key ${CLOUDTRUTH_API_KEY}" --header "accept: application/json" --request 'GET' "https://api.cloudtruth.io/api/v1/projects/${PROJECTKEY}/parameters/?environment=${ENVIRONMENTKEY}&evaluate=false&immediate_parameters=true&mask_secrets=false&name__iexact=${PROJECT}-secret-data" 2>/dev/null | jq -r '.results[0].values_flat[0].value'
