@@ -1,3 +1,4 @@
 sops*
 krew*
 dotnet-appsettings-env
+yq*
