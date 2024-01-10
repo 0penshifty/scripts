@@ -2,3 +2,4 @@ sops*
 krew*
 dotnet-appsettings-env
 yq*
+add-to-api.sh
